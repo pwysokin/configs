@@ -1,7 +1,14 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Docplanner docker-specific configuration
 export LOCAL_USER_ID=$(id -u)
 export LOCAL_GROUP_ID=$(id -g)
-export XDEBUG_HOST=host.docker.internal
+export XDEBUG_HOST=10.254.254.254
 # end of docker-specific configuration
 
 export TERM="xterm-256color"
@@ -12,25 +19,8 @@ HIST_STAMPS="yyyy-mm-dd"
 
 ANTIGEN_AUTOUPDATE_VERBOSE=1
 
-#POWERLEVEL9K_INSTALLATION_PATH=$HOME/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-bhilburn-SLASH-powerlevel9k.git/powerlevel9k.zsh-theme
-POWERLEVEL9K_INSTALLATION_PATH=$HOME/.antigen/bundles/bhilburn/powerlevel9k
-POWERLEVEL9K_MODE="awesome-patched"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time virtualenv rbenv time)
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-POWERLEVEL9K_STATUS_VERBOSE=true
-
-# Colors
-POWERLEVEL9K_STATUS_OK_BACKGROUND="green"
-POWERLEVEL9K_STATUS_OK_FOREGROUND="black"
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND="red"
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND="black"
-POWERLEVEL9K_TIME_BACKGROUND="black"
-POWERLEVEL9K_TIME_FOREGROUND="249"
-
 #export PATH="$HOME/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.config/composer/vendor/bin:$PATH"
+export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.config/composer/vendor/bin:$HOME/scripts:$PATH"
 
 autoload -Uz compinit && compinit -i
 test -d "${HOME}/.zsh/completion" || mkdir -p "${HOME}/.zsh/completion"
@@ -69,8 +59,7 @@ antigen bundles <<EOBUNDLES
 EOBUNDLES
 
 # Load the theme.
-# antigen theme agnoster
-antigen theme bhilburn/powerlevel9k powerlevel9k
+antigen theme romkatv/powerlevel10k
 
 # Tell Antigen that you're done.
 antigen apply
@@ -89,3 +78,6 @@ export PATH=$PATH:$GOPATH/bin
 export GOROOT=/usr/local/go
 
 export PATH=$PATH:$GOROOT/bin
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
