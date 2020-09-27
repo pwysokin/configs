@@ -34,7 +34,8 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries;'}
-Plug 'git@github.com:kien/ctrlp.vim.git'
+Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -48,8 +49,9 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
-"let crtlp ignore some files while searching
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+"fzf config
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAUT_OPTS='--reverse'
 
 "set leader key
 let mapleader = " "
@@ -59,17 +61,22 @@ let g:netrw_browser_splits=2 "open file tree in new file splitted vertically
 let g:netrw_banner=0 "hide top banner
 let g:netrw_winsize=25 "size of newly opened file tree
 
-let g:ctrlp_use_caching=0 "ctrlp do not cache search results
-
+"Windows movement
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
+"Show undotree
+nnoremap <leader>u :UndotreeShow<CR>
+
+"Show file tree already resized
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+
+"RipGrep through project
+nnoremap <leader>ps :Rg<SPACE>
 
 "coc
 " Use tab for trigger completion with characters ahead and navigate.
