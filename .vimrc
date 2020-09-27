@@ -1,18 +1,19 @@
 syntax on
 
-set noerrorbells
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set nu
-set nowrap
-set smartcase
-set noswapfile
-set nobackup
-set undodir=~/.vim/undodir
-set undofile
-set incsearch
+set noerrorbells "disable audio effects
+set tabstop=4 softtabstop=4 "tabs = 4 spaces
+set shiftwidth=4 "shifting indent by 4 spaces
+set expandtab "convert tabs to spaces
+set smartindent "indent code autamaticaly
+set nu "show line nuber
+set relativenumber "show reletive line numbers
+set nowrap "no wrapping lines
+set smartcase "smart case sensitive searching until enter capital letter 
+set noswapfile "disable .vim files in project folder
+set nobackup "disable backup files - we have undo folder instead
+set undodir=~/.vim/undodir "path to undo folder (has to be created manually)
+set undofile "enable undo files for edited files 
+set incsearch "load search incrementaly, while typing
 
 "coc
 set hidden
@@ -42,17 +43,23 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 
+"set ripgrep to atuo search in project folder
 if executable('rg')
     let g:rg_derive_root='true'
 endif
 
+"let crtlp ignore some files while searching
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let mapleader = " "
-let g:netrw_browser_splits=2
-let g:netrw_banner=0
-let g:netrw_winsize=25
 
-let g:ctrlp_use_caching=0
+"set leader key
+let mapleader = " "
+
+" config file tree
+let g:netrw_browser_splits=2 "open file tree in new file splitted vertically
+let g:netrw_banner=0 "hide top banner
+let g:netrw_winsize=25 "size of newly opened file tree
+
+let g:ctrlp_use_caching=0 "ctrlp do not cache search results
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -60,6 +67,7 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
