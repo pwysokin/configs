@@ -1,0 +1,20 @@
+""" Common
+set showmode
+set clipboard=unnamedplus
+set tabstop=4 softtabstop=4 "tabs = 4 spaces
+set shiftwidth=4 "shifting indent by 4 spaces
+set expandtab "convert tabs to spaces
+set smartindent "indent code autamaticaly
+set nu "show line number
+set relativenumber "show relative line numbers
+set nowrap "no wrapping lines
+set smartcase "smart case sensitive searching until enter capital letter
+set incsearch "load search incrementaly, while typing
+set surround "adds mappings from vim-surround plugin
+
+""" Mappings
+nnoremap <C-A> ggVG
+
+""" PhpStorm
+set ideavimsupport=
+

@@ -72,6 +72,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="~/.npm-global/bin:$PATH"
 export GOPATH=$HOME/gowork
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
