@@ -1,0 +1,2 @@
+alias firefox-xlaunch='firefox </dev/null &>/dev/null &'
+alias insomnia-xlaunch='insomnia </dev/null &>/dev/null &'
