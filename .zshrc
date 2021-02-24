@@ -11,6 +11,14 @@ export LOCAL_GROUP_ID=$(id -g)
 export XDEBUG_HOST=10.254.254.254
 # end of docker-specific configuration
 
+# PhpStorm xdebug config
+export XDEBUG_REMOTE_HOST=192.168.94.43
+export PHP_IDE_CONFIG="serverName=docker"
+
+# SSet keychain
+/usr/bin/keychain $HOME/.ssh/id_ed25519
+source $HOME/.keychain/$HOST-sh
+
 export TERM="xterm-256color"
 export EDITOR=nano
 export LANG=en_US.UTF-8
@@ -20,7 +28,10 @@ HIST_STAMPS="yyyy-mm-dd"
 ANTIGEN_AUTOUPDATE_VERBOSE=1
 
 #export PATH="$HOME/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.config/composer/vendor/bin:$HOME/scripts:$PATH"
+export PATH="$HOME/.bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$HOME/scripts:$PATH"
+export PATH="/opt/jetbrains-toolbox-1.20.7940:$PATH"
+export PATH="/opt/Insomnia:$PATH"
 
 autoload -Uz compinit && compinit -i
 test -d "${HOME}/.zsh/completion" || mkdir -p "${HOME}/.zsh/completion"
@@ -41,15 +52,12 @@ antigen bundles <<EOBUNDLES
 	command-not-found
 	greymd/docker-zsh-completion
 	zdharma/history-search-multi-word
-#	docker
+	docker
 	git
 	git-extras
 	git-flow
 	httpie
-	macports
-	brew
 	extract
-	osx
 	node
 	npm
 	yarn
@@ -82,3 +90,6 @@ export PATH=$PATH:$GOROOT/bin
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export LIBGL_ALWAYS_INDIRECT=1
+export DISPLAY=192.168.1.161:0.0
+export GDK_SCALE=1

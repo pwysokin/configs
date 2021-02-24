@@ -14,6 +14,7 @@ set nobackup "disable backup files - we have undo folder instead
 set undodir=~/.vim/undodir "path to undo folder (has to be created manually)
 set undofile "enable undo files for edited files 
 set incsearch "load search incrementaly, while typing
+set visualbell "disable bell in WT
 
 "coc
 set hidden
@@ -37,7 +38,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries;'}
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
